@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding fileName="modules/list/persistentdocument/import/list_binding.xml" />
+	<binding fileName="modules/productupdater/persistentdocument/import/productupdater_binding.xml" />
+	
+	<systemfolder module="list" relatedmodule="productupdater">
+		<staticlist listid="modules_productupdater/format" label="Format de fichier">
+			<staticitem label="&amp;modules.productupdater.bo.list.format.Csv;"
+				value="csv" />
+			<staticitem label="&amp;modules.productupdater.bo.list.format.Xml;"
+				value="xml" />
+		</staticlist>
+		
+		<staticlist listid="modules_productupdater/datamodel" label="Type de données">
+			<staticitem label="&amp;modules.productupdater.bo.list.datamodel.Stock;"
+				value="stock" />
+			<staticitem label="&amp;modules.productupdater.bo.list.datamodel.Price;"
+				value="price" />
+			<staticitem label="&amp;modules.productupdater.bo.list.datamodel.ProductInfos;"
+				value="productInfos" />
+		</staticlist>		
+	</systemfolder>
+</script>

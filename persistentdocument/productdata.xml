@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/1.0.xsd" model-version="1.0" has-url="false" publish-on-day-change="false" icon="productdata">
+	<properties>
+		<add name="shop" type="modules_catalog/shop" min-occurs="1"/>
+		<add name="productQuery" type="Lob"/>
+		<add name="datamodel" type="String" min-occurs="1" default-value="stock" 
+			 from-list="modules_productupdater/datamodel"/>
+		<add name="format" type="String" min-occurs="1" default-value="csv" db-size="10" 
+			 from-list="modules_productupdater/format"/>	
+	</properties>
+	<serializedproperties>
+		<add name="lastexportdate" type="DateTime"/>
+		<add name="lastimportdate" type="DateTime"/>
+	</serializedproperties>
+	<statuses default="ACTIVE"/>
+</document>

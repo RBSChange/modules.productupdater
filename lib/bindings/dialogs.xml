@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<bindings xmlns="http://www.mozilla.org/xbl" xmlns:xbl="http://www.mozilla.org/xbl"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<binding id="importProductUpdaterDialog" extends="core.wDialog#wDialog">
+		<implementation>
+			<field name="nsIFile">null</field>
+			
+			<constructor><![CDATA[
+				wCore.debug('importProductUpdaterDialog.constructor');	
+			]]></constructor>
+
+			<method name="onInitialize">
+				<body><![CDATA[
+					this.autoResize(400, 150);
+				]]></body>
+			</method>
+
+			<method name="onCancel">
+				<body><![CDATA[
+					this.parameters.module.refresh();
+					this.controller.closeModalDialog();
+				]]></body>
+			</method>
+
+			<method name="openFilePicker">
+				<body><![CDATA[	
+					var filePicker = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+					filePicker.init(window, "Selectionner un fichier", filePicker.modeOpen);
+					if(filePicker.show() == filePicker.returnOK)
+					{
+						this.setFile(filePicker.file);
+					}
+				]]></body>
+			</method>
+			
+			<method name="setFile">
+				<parameter name="nsIFile" />
+				<body><![CDATA[
+					var field = document.getAnonymousElementByAttribute(this, 'anonid', 'file');
+					field.setAttribute('value', nsIFile.leafName);
+					this.nsIFile = nsIFile;
+					
+					var button = document.getAnonymousElementByAttribute(this, 'anonid', 'ok');
+					button.removeAttribute('disabled');
+				]]></body>
+			</method>
+			
+			<method name="onOk">
+				<body><![CDATA[
+					try
+					{
+						document.getAnonymousElementByAttribute(this, 'anonid', 'form-panel').setAttribute('hidden', 'true');
+						document.getAnonymousElementByAttribute(this, 'anonid', 'importing-panel').removeAttribute('hidden');
+						document.getAnonymousElementByAttribute(this, 'anonid', 'message-panel').setAttribute('hidden', 'true');
+						var me = this;
+						var callbackComplete = function(result) {me.onUploadComplete(result);};
+						var parameters = {module: 'productupdater', action: 'Import', cmpref: this.parameters.cmpref};
+						wCore.uploadFile(this.nsIFile, parameters, callbackComplete);
+					}
+					catch (e)
+					{
+						wCore.error("onOk", [nsIFile], e);
+						document.getAnonymousElementByAttribute(this, 'anonid', 'form-panel').removeAttribute('hidden');
+						document.getAnonymousElementByAttribute(this, 'anonid', 'importing-panel').setAttribute('hidden', 'true');
+						document.getAnonymousElementByAttribute(this, 'anonid', 'message-panel').setAttribute('hidden', 'true');
+					}
+				]]></body>
+			</method>
+			
+			<method name="onUploadComplete">
+				<parameter name="result" />
+				<body><![CDATA[
+					document.getAnonymousElementByAttribute(this, 'anonid', 'form-panel').setAttribute('hidden', 'true');
+					document.getAnonymousElementByAttribute(this, 'anonid', 'importing-panel').setAttribute('hidden', 'true');
+					document.getAnonymousElementByAttribute(this, 'anonid', 'message-panel').removeAttribute('hidden');
+					
+					if (result.status == 'OK')
+					{
+						if (result.contents.message)
+						{
+							this.appendMessage(result.contents.message);
+						}
+						else
+						{
+							this.appendMessage("&amp;modules.productupdater.bo.dialogs.import.Success;");
+						}
+					}
+					else
+					{
+						wCore.warn('onUploadComplete: ' + wCore.dump(result));
+						this.appendMessage(result.contents.errorMessage);
+					}
+				]]></body>
+			</method>
+			
+			<method name="appendMessage">
+				<parameter name="msg" />
+				<body><![CDATA[
+					var messageBox = document.getAnonymousElementByAttribute(this, 'anonid', 'messageBox');
+					var txts = msg.split("\n");
+					for (var i = 0; i < txts.length; i++)
+					{
+						var node = messageBox.appendChild(document.createElement('description'));
+						node.setAttribute('style', 'max-width: 370px');
+						node.textContent = txts[i];
+					}
+				]]></body>
+			</method>
+		</implementation>
+		<xbl:content>
+			<xul:vbox flex="1">
+				<xul:hbox class="dialog-header">
+					<xul:label value="&amp;modules.productupdater.bo.dialogs.import.Title;" class="dialog-title" />
+					<xul:spacer flex="1" />
+					<xul:vbox pack="center">
+						<xul:toolbarbutton height="16" width="16" image="{IconsBase}/small/delete.png" oncommand="onCancel();" tooltiptexts="&amp;modules.uixul.bo.dialog.Close;" />
+					</xul:vbox>
+				</xul:hbox>
+				<xul:deck anonid="deck">
+					<xul:vbox anonid="form-panel" flex="1">
+						<xul:hbox align="center" pack="start" style="margin-top: 5px">
+							<xul:label value="&amp;modules.productupdater.bo.dialogs.import.fileLabel;" />
+							<xul:textbox readonly="true" anonid="file" size="30" />
+							<xul:toolbarbutton anonid="uploadbutton" image="{IconsBase}/small/upload.png" oncommand="openFilePicker()" tooltiptext="&amp;modules.uixul.bo.doceditor.Upload-file-from-disk;" />
+						</xul:hbox>
+						<xul:hbox flex="1" align="start" pack="center" style="margin-top: 20px">
+							<xul:button image="{IconsBase}/small/check.png" disabled="true" anonid="ok" oncommand="onOk()"	label="&amp;modules.productupdater.bo.dialogs.import.Start-import;" />
+							<xul:button image="{IconsBase}/small/delete.png" oncommand="onCancel()" label="&amp;modules.uixul.bo.dialog.Close;" />
+						</xul:hbox>
+					</xul:vbox>
+					<xul:vbox anonid="importing-panel" flex="1" style="opacity:0.7">
+						<xul:spacer height="15px" />
+						<xul:hbox pack="center">
+							<xul:image src="{HttpHost}/media/backoffice/loading_40.gif" height="40px" width="40px" />
+						</xul:hbox>
+						<xul:spacer height="16px" />
+						<xul:hbox pack="center">
+							<xul:description style="font-size:18px" value="&amp;modules.productupdater.bo.dialogs.import.Importing;" />
+						</xul:hbox>
+					</xul:vbox>
+					<xul:vbox anonid="message-panel" flex="1">
+						<xul:vbox anonid="messageBox" style="min-height: 90px"/>
+						<xul:hbox>
+							<xul:button image="{IconsBase}/small/delete.png" oncommand="onCancel()" label="&amp;modules.uixul.bo.dialog.Close;" />
+						</xul:hbox>
+					</xul:vbox>
+				</xul:deck>
+			</xul:vbox>
+		</xbl:content>
+	</binding>
+</bindings>

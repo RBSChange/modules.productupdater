@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+	<entity id="insert-folder">
+		<locale lang="fr">insert.folder {documentlabel}</locale>
+	</entity>
+	<entity id="log-insert-folder">
+		<locale lang="fr">log-insert-folder</locale>
+	</entity>
+	<entity id="savepermissions-folder">
+		<locale lang="fr">savepermissions.folder {documentlabel}</locale>
+	</entity>
+	<entity id="log-savepermissions-folder">
+		<locale lang="fr">log-savepermissions-folder</locale>
+	</entity>
+	<entity id="update-folder">
+		<locale lang="fr">update.folder {documentlabel}</locale>
+	</entity>
+	<entity id="log-update-folder">
+		<locale lang="fr">log-update-folder</locale>
+	</entity>
+	<entity id="move-folder">
+		<locale lang="fr">move.folder {destinationlabel} {documentlabel}</locale>
+	</entity>
+	<entity id="log-move-folder">
+		<locale lang="fr">log-move-folder</locale>
+	</entity>
+	<entity id="savepermissions-rootfolder">
+		<locale lang="fr">savepermissions.rootfolder {documentlabel}</locale>
+	</entity>
+	<entity id="log-savepermissions-rootfolder">
+		<locale lang="fr">log-savepermissions-rootfolder</locale>
+	</entity>
+	<entity id="delete-folder">
+		<locale lang="fr">delete.folder {documentlabel}</locale>
+	</entity>
+	<entity id="log-delete-folder">
+		<locale lang="fr">log-delete-folder</locale>
+	</entity>
+	<entity id="insert-productdata">
+		<locale lang="fr">insert.productdata {documentlabel}</locale>
+	</entity>
+	<entity id="log-insert-productdata">
+		<locale lang="fr">log-insert-productdata</locale>
+	</entity>
+	<entity id="update-productdata">
+		<locale lang="fr">update.productdata {documentlabel}</locale>
+	</entity>
+	<entity id="log-update-productdata">
+		<locale lang="fr">log-update-productdata</locale>
+	</entity>
+	<entity id="deactivated-productdata">
+		<locale lang="fr">deactivated.productdata {documentlabel}</locale>
+	</entity>
+	<entity id="log-deactivated-productdata">
+		<locale lang="fr">log-deactivated-productdata</locale>
+	</entity>
+	<entity id="reactivate-productdata">
+		<locale lang="fr">reactivate.productdata {documentlabel}</locale>
+	</entity>
+	<entity id="log-reactivate-productdata">
+		<locale lang="fr">log-reactivate-productdata</locale>
+	</entity>
+	<entity id="delete-productdata">
+		<locale lang="fr">delete.productdata {documentlabel}</locale>
+	</entity>
+	<entity id="log-delete-productdata">
+		<locale lang="fr">log-delete-productdata</locale>
+	</entity>
+	<entity id="export-productdata">
+		<locale lang="fr">export.productdata {documentlabel}</locale>
+	</entity>
+	<entity id="log-export-productdata">
+		<locale lang="fr">log-export-productdata</locale>
+	</entity>
+	<entity id="import-productdata">
+		<locale lang="fr">import.productdata {documentlabel}</locale>
+	</entity>
+	<entity id="log-import-productdata">
+		<locale lang="fr">log-import-productdata</locale>
+	</entity>
+</localization>

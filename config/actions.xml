@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+  <!-- 
+	Define here backoffice action
+	Example:
+	<action name="createDocumentName">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.createDocumentEditor('modules_MODULENAME_DOCUMENTNAME', listWidget.getSelectedItems()[0].id);
+		]]></body>
+	</action>
+	
+	Return true if the action 'createDocumentName' is active.
+	<action name="createDocumentNameIsActive">
+		<parameter name="itemData"/>
+		<body><![CDATA[
+			//Ex : le document existe dans la langue de travail
+			return itemData.langAvailable;
+		]]></body>
+	</action>
+	-->
+  <action name="createFolder">
+    <parameter name="listWidget"/>
+    <body><![CDATA[
+			this.createDocumentEditor('modules_productupdater_folder', listWidget.getSelectedItems()[0].id);
+		]]></body>
+  </action>
+  <action name="createProductdata">
+    <parameter name="listWidget"/>
+    <body><![CDATA[this.createDocumentEditor('modules_productupdater_productdata', listWidget.getSelectedItems()[0].id);]]></body>
+  </action>
+  
+  <action name="export">
+    <parameter name="listWidget"/>
+    <body><![CDATA[
+    	var id = listWidget.getSelectedItems()[0].id;
+    	var url = wCore.buildServerUrl("productupdater", "Export", {"cmpref":id});
+    	wCore.debug(url);
+    	wToolkit.downloadurl(url);
+    ]]></body>
+  </action>
+  
+  <action name="import">
+    <parameter name="listWidget"/>
+    <body><![CDATA[
+    	var id = listWidget.getSelectedItems()[0].id;
+    	var module = this;
+		try
+		{
+			this.getController().openModalDialog(this, 'ImportProductUpdater', {cmpref: id, module: module});
+		}
+		catch (e)
+		{
+			wCore.error('import', [], e);
+		}
+    ]]></body>
+  </action>
+  <action name="importIsActive">
+    <parameter name="itemData"/>
+    <body><![CDATA[
+    	return itemData.canImport;
+    ]]></body>
+  </action>
+</actions>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+  <entity id="create_">
+    <locale lang="fr">créer</locale>
+    <locale lang="en">create</locale>
+    <locale lang="de">neu</locale>
+  </entity>
+  <entity id="Create-Productdata">
+    <locale lang="fr">Créer un export de produit</locale>
+  </entity>
+  <entity id="export">
+    <locale lang="fr">Exporter</locale>
+  </entity>
+  <entity id="import">
+    <locale lang="fr">Importer</locale>
+  </entity>
+</localization>

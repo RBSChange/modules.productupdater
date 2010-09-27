@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+  <binding fileName="modules/useractionlogger/persistentdocument/import/useractionlogger_binding.xml"/>
+  <actiondef modulename="productupdater" actionname="insert.folder" label="modules.productupdater.bo.useractionlogger.insert-folder"/>
+  <actiondef modulename="productupdater" actionname="savepermissions.folder" label="modules.productupdater.bo.useractionlogger.savepermissions-folder"/>
+  <actiondef modulename="productupdater" actionname="update.folder" label="modules.productupdater.bo.useractionlogger.update-folder"/>
+  <actiondef modulename="productupdater" actionname="move.folder" label="modules.productupdater.bo.useractionlogger.move-folder"/>
+  <actiondef modulename="productupdater" actionname="savepermissions.rootfolder" label="modules.productupdater.bo.useractionlogger.savepermissions-rootfolder"/>
+  <actiondef modulename="productupdater" actionname="delete.folder" label="modules.productupdater.bo.useractionlogger.delete-folder"/>
+  <actiondef modulename="productupdater" actionname="insert.productdata" label="modules.productupdater.bo.useractionlogger.insert-productdata"/>
+  <actiondef modulename="productupdater" actionname="update.productdata" label="modules.productupdater.bo.useractionlogger.update-productdata"/>
+  <actiondef modulename="productupdater" actionname="deactivated.productdata" label="modules.productupdater.bo.useractionlogger.deactivated-productdata"/>
+  <actiondef modulename="productupdater" actionname="reactivate.productdata" label="modules.productupdater.bo.useractionlogger.reactivate-productdata"/>
+  <actiondef modulename="productupdater" actionname="delete.productdata" label="modules.productupdater.bo.useractionlogger.delete-productdata"/>
+  <actiondef modulename="productupdater" actionname="export.productdata" label="modules.productupdater.bo.useractionlogger.export-productdata"/>
+  <actiondef modulename="productupdater" actionname="import.productdata" label="modules.productupdater.bo.useractionlogger.import-productdata"/>
+</script>
