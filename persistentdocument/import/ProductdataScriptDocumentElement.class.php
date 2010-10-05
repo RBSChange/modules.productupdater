@@ -20,4 +20,18 @@ class productupdater_ProductdataScriptDocumentElement extends import_ScriptDocum
 	{
 		return f_persistentdocument_PersistentDocumentModel::getInstanceFromDocumentModelName('modules_productupdater/productdata');
 	}
+
+	/**
+	 * @return array
+	 */
+	protected function getDocumentProperties()
+	{
+		$properties = parent::getDocumentProperties();
+		if (isset($properties['productQuery']))
+		{
+			$query = $this->replaceRefIdInString($properties['productQuery']) ;
+			$properties['productQuery'] = $query;
+		}
+		return $properties;
+	}
 }
