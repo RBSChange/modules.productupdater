@@ -88,7 +88,6 @@ class productupdater_ProductdataService extends f_persistentdocument_DocumentSer
 		{
 			$document->setLastexportdate(null);
 			$document->setLastimportdate(null);
-			$document->setLastimportfileid(null);
 		}
 	}
 	

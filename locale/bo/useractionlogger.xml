@@ -78,4 +78,4 @@
 	<entity id="log-import-productdata">
 		<locale lang="fr">log-import-productdata</locale>
 	</entity>
-</localization>
+<entity id="insert-productdata"><locale lang="fr">insert.productdata {documentlabel}</locale></entity><entity id="log-insert-productdata"><locale lang="fr">log-insert-productdata</locale></entity><entity id="export-productdata"><locale lang="fr">export.productdata {documentlabel}</locale></entity><entity id="log-export-productdata"><locale lang="fr">log-export-productdata</locale></entity><entity id="import-productdata"><locale lang="fr">import.productdata {documentlabel}</locale></entity><entity id="log-import-productdata"><locale lang="fr">log-import-productdata</locale></entity><entity id="update-productdata"><locale lang="fr">update.productdata {documentlabel}</locale></entity><entity id="log-update-productdata"><locale lang="fr">log-update-productdata</locale></entity></localization>
