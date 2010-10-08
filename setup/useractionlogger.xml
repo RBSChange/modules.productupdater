@@ -14,8 +14,4 @@
   <actiondef modulename="productupdater" actionname="delete.productdata" label="modules.productupdater.bo.useractionlogger.delete-productdata"/>
   <actiondef modulename="productupdater" actionname="export.productdata" label="modules.productupdater.bo.useractionlogger.export-productdata"/>
   <actiondef modulename="productupdater" actionname="import.productdata" label="modules.productupdater.bo.useractionlogger.import-productdata"/>
-  <actiondef modulename="productupdater" actionname="insert.productdata" label="modules.productupdater.bo.useractionlogger.insert-productdata"/>
-  <actiondef modulename="productupdater" actionname="export.productdata" label="modules.productupdater.bo.useractionlogger.export-productdata"/>
-  <actiondef modulename="productupdater" actionname="import.productdata" label="modules.productupdater.bo.useractionlogger.import-productdata"/>
-  <actiondef modulename="productupdater" actionname="update.productdata" label="modules.productupdater.bo.useractionlogger.update-productdata"/>
 </script>
