@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.productupdater.bo.list.format" lcid="fr_FR">
+  <key id="csv">CSV</key>
+  <key id="xml">XML</key>
+</i18n>

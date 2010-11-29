@@ -26,17 +26,18 @@ class productupdater_StockData implements productupdater_DataModel
 	}
 	
 	/**
-	 * @param catalog_StockableDocument $document
+	 * @param catalog_persistentdocument_product $document
 	 * @param array $values
 	 * @return boolean
 	 */
 	function exportValues($document, &$values)
 	{
-		if ($document instanceof catalog_StockableDocument) 
+		$stDoc = catalog_StockService::getInstance()->getStockableDocument($document);
+		if ($stDoc !== null) 
 		{
-			$values['stocklevel'] = $document->getStockLevel();
-			$values['stockquantity'] = $document->getStockQuantity();
-			if (f_util_ClassUtils::methodExists($document, 'getStockAlertThreshold'))
+			$values['stocklevel'] = $stDoc->getCurrentStockLevel();
+			$values['stockquantity'] = $document->getCurrenStockQuantity();
+			if ($stDoc === $document)
 			{
 				$values['stockalertthreshold'] = $document->getStockAlertThreshold();
 			}
@@ -61,20 +62,12 @@ class productupdater_StockData implements productupdater_DataModel
 	 */
 	function importValues($values, &$document)
 	{
-		if ($document instanceof catalog_StockableDocument) 
+		$stDoc = catalog_StockService::getInstance()->getStockableDocument($document);
+		if ($document === $stDoc) 
 		{
-			if (f_util_ClassUtils::methodExists($document, 'setStockQuantity'))
-			{
-				$document->setStockQuantity($values['stockquantity']);
-			}
-			if (f_util_ClassUtils::methodExists($document, 'setStockLevel'))
-			{
-				$document->setStockLevel($values['stocklevel']);
-			}	
-			if (f_util_ClassUtils::methodExists($document, 'setStockAlertThreshold'))
-			{
-				$document->setStockAlertThreshold($values['stockalertthreshold']);
-			}
+			$document->setStockQuantity($values['stockquantity']);
+			$document->setStockLevel($values['stocklevel']);
+			$document->setStockAlertThreshold($values['stockalertthreshold']);
 			return true;		
 		}
 		return false;

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.productupdater.bo.dialogs.import" lcid="fr_FR">
+  <key id="success">Fichier importé avec succes.</key>
+  <key id="title">Séléction du fichier à importer</key>
+  <key id="file">fichier</key>
+  <key id="start-import">importer</key>
+  <key id="importing">import en cours...</key>
+</i18n>

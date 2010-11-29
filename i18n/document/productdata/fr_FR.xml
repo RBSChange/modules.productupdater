@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.productupdater.document.productdata" lcid="fr_FR">
+  <key id="document-name">Export de produit</key>
+  <key id="label">libellé</key>
+  <key id="shop">boutique</key>
+  <key id="productquery">produits concernés</key>
+  <key id="productquery-help">par défaut, tous les produits publiés dans la boutique seront exportés. Vous pouvez ajouter des restrictions via ce champ.</key>
+  <key id="datamodel">données du fichier</key>
+  <key id="format">format du fichier</key>
+</i18n>
