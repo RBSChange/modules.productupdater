@@ -230,4 +230,18 @@ class productupdater_ProductdataService extends f_persistentdocument_DocumentSer
 		}
 		return $dataModels;
 	}
+	
+	/**
+	 * @param productupdater_persistentdocument_productdata $document
+	 * @param string $moduleName
+	 * @param string $treeType
+	 * @param array<string, string> $nodeAttributes
+	 */
+	public function addTreeAttributes($document, $moduleName, $treeType, &$nodeAttributes)
+	{
+		if ($treeType === 'wlist' && $document->getLastexportdate())
+		{
+			$nodeAttributes['canImport'] = true;
+		}
+	}
 }

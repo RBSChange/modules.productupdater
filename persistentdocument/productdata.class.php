@@ -6,27 +6,6 @@
 class productupdater_persistentdocument_productdata extends productupdater_persistentdocument_productdatabase 
 {
 	/**
-	 * @param string $moduleName
-	 * @param string $treeType
-	 * @param array<string, string> $nodeAttributes
-	 */
-	protected function addTreeAttributes($moduleName, $treeType, &$nodeAttributes)
-	{
-		if ($treeType === 'wlist' && $this->getLastexportdate())
-		{
-			$nodeAttributes['canImport'] = true;
-		}
-	}
-	
-	/**
-	 * @param string $actionType
-	 * @param array $formProperties
-	 */
-//	public function addFormProperties($propertiesNames, &$formProperties)
-//	{	
-//	}
-
-	/**
 	 * @return productupdater_Formatter
 	 */
 	private function getFormatter()
