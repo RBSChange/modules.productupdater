@@ -36,7 +36,7 @@ class productupdater_StockData implements productupdater_DataModel
 		if ($stDoc !== null) 
 		{
 			$values['stocklevel'] = $stDoc->getCurrentStockLevel();
-			$values['stockquantity'] = $document->getCurrenStockQuantity();
+			$values['stockquantity'] = $document->getCurrentStockQuantity();
 			if ($stDoc === $document)
 			{
 				$values['stockalertthreshold'] = $document->getStockAlertThreshold();
