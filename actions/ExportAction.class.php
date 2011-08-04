@@ -3,11 +3,11 @@
  * productupdater_ExportAction
  * @package modules.productupdater.actions
  */
-class productupdater_ExportAction extends f_action_BaseAction
+class productupdater_ExportAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -30,6 +30,6 @@ class productupdater_ExportAction extends f_action_BaseAction
 		readfile($resourcePath);
 		
 		unlink($resourcePath);
-		return View::NONE;
+		return change_View::NONE;
 	}
 }

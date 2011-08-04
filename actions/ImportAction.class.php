@@ -3,11 +3,11 @@
  * productupdater_ImportAction
  * @package modules.productupdater.actions
  */
-class productupdater_ImportAction extends f_action_BaseJSONAction
+class productupdater_ImportAction extends change_JSONAction
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -35,7 +35,7 @@ class productupdater_ImportAction extends f_action_BaseJSONAction
 	}
 	
 	/**
-	 * @param Request $request
+	 * @param change_Request $request
 	 * @return productupdater_persistentdocument_productdata
 	 */
 	private function getProductData($request)
