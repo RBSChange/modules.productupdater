@@ -37,7 +37,10 @@
     </model>
     <model name="modules_generic/systemfolder">
       <contextactions>
-        <contextaction name="openFolder"/>
+        <contextaction name="edit" />
+        <contextaction name="delete" />
+        <contextaction name="openTreeNodeOrder" />
+        <contextaction name="openFolder" />
       </contextactions>
     </model>
     <model name="modules_productupdater/productdata">
