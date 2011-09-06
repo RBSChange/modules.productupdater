@@ -4,16 +4,9 @@
 	xsi:schemaLocation="http://www.rbs.fr/schema/change-component/1.0 http://www.rbschange.fr/static/schema/change-component/1.0.xsd">
 	<name>productupdater</name>
 	<type>change-module</type>
-	<version>3.5.0</version>
+	<version>3.5.1</version>
 	<description>Export, import de produits</description>
 	<license>os</license>
 	<repository>public</repository>
-	<dependencies>
-		<dependency>
-			<name>change-lib/framework</name>
-			<versions>
-				<version>3.5.0</version>
-			</versions>
-		</dependency>
-	</dependencies>
+	<dependencies></dependencies>
 </change>
