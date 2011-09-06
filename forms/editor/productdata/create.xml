@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <panel>
   <section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
-    <field name="label"/>
-    <field name="shop"/>
+    <field name="label" hidehelp="true"/>
+    <field name="shop" hidehelp="true"/>
     <field name="productQuery" type="query" allow="catalog/product::getQuery" />
-    <field name="datamodel" type="checklist" />
-    <field name="format"/>
+    <field name="datamodel" type="checklist" hidehelp="true" />
+    <field name="format" hidehelp="true"/>
   </section>
 </panel>
