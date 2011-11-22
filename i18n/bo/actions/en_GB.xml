@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.productupdater.bo.actions" lcid="en_GB">
   <key id="create_">create</key>
+  <key id="create-productdata">Create a product export</key>
+  <key id="export">Export</key>
+  <key id="import">Import</key>
 </i18n>

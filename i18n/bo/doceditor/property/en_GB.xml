@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.productupdater.bo.doceditor.property" lcid="en_GB">
+  <key id="filedata">File</key>
+  <key id="lastexport">Last export</key>
+  <key id="lastimport">Last import</key>
+</i18n>

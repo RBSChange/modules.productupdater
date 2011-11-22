@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.productupdater.bo.list.datamodel" lcid="en_GB">
+  <key id="price">shop price</key>
+  <key id="productinfos">information (export only)</key>
+  <key id="stock">stock</key>
+</i18n>
