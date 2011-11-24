@@ -2,4 +2,9 @@
 <i18n baseKey="m.productupdater.document.productdata" lcid="en_GB">
   <key id="label">label</key>
   <key id="shop">shop</key>
+  <key id="datamodel">file data</key>
+  <key id="document-name">Product export</key>
+  <key id="format">file format</key>
+  <key id="productquery">applicable products</key>
+  <key id="productquery-help">By default, all products published in the shop will be exported. You can add restrictions with this field.</key>
 </i18n>
