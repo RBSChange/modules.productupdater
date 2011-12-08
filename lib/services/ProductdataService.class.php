@@ -233,15 +233,12 @@ class productupdater_ProductdataService extends f_persistentdocument_DocumentSer
 	
 	/**
 	 * @param productupdater_persistentdocument_productdata $document
+	 * @param array<string, string> $attributes
+	 * @param integer $mode
 	 * @param string $moduleName
-	 * @param string $treeType
-	 * @param array<string, string> $nodeAttributes
 	 */
-	public function addTreeAttributes($document, $moduleName, $treeType, &$nodeAttributes)
+	public function completeBOAttributes($document, &$attributes, $mode, $moduleName)
 	{
-		if ($treeType === 'wlist' && $document->getLastexportdate())
-		{
-			$nodeAttributes['canImport'] = true;
-		}
+		$attributes['canImport'] = true;
 	}
 }
