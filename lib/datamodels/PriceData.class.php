@@ -6,7 +6,7 @@ class productupdater_PriceData implements productupdater_DataModel
 	 */
 	private $productData;
 	
-	private $keys = array('valueWithTax', 'oldValueWithTax',  'taxCode',  'valueWithoutTax', 'oldValueWithoutTax', 'ecoTax');
+	private $keys = array('valueWithTax', 'oldValueWithTax',  'taxCode',  'valueWithoutTax', 'oldValueWithoutTax', 'taxCategory', 'ecoTax');
 	 
 	/**
 	 * @param productupdater_persistentdocument_productdata $productData
@@ -21,11 +21,12 @@ class productupdater_PriceData implements productupdater_DataModel
 	 */
 	function addHeaders(&$headers)
 	{
-		$headers['valueWithTax'] = 'valueWithTax';
-		$headers['oldValueWithTax'] = 'oldValueWithTax';
-		$headers['taxCode'] = 'taxCode';
+		$headers['valueWithTax'] = 'valueWithTax (RO)';
+		$headers['oldValueWithTax'] = 'oldValueWithTax (RO)';
+		$headers['taxCode'] = 'taxCode (RO)';
 		$headers['valueWithoutTax'] = 'valueWithoutTax';
 		$headers['oldValueWithoutTax'] = 'oldValueWithoutTax';
+		$headers['taxCategory'] = 'taxCategory';
 		$headers['ecoTax'] = 'ecoTax';
 	}
 	
@@ -44,6 +45,7 @@ class productupdater_PriceData implements productupdater_DataModel
 			$values['taxCode'] = $price->getTaxCode();
 			$values['valueWithoutTax'] = $price->getValueWithoutTax();
 			$values['oldValueWithoutTax'] = $price->getOldValueWithoutTax();
+			$values['taxCategory'] = $price->getTaxCategory();
 			$values['ecoTax'] = $price->getEcoTax();
 		}
 		else
@@ -53,6 +55,7 @@ class productupdater_PriceData implements productupdater_DataModel
 			$values['taxCode'] = '';
 			$values['valueWithoutTax'] = '';
 			$values['oldValueWithoutTax'] = '';
+			$values['taxCategory'] = '';
 			$values['ecoTax'] = '';
 		}
 		return true;
@@ -69,25 +72,16 @@ class productupdater_PriceData implements productupdater_DataModel
 		{
 			$price = $document->getPrice($this->productData->getShop(), null);
 			if ($price instanceof catalog_persistentdocument_price && !$price->isNew()) 
-			{
-				$val = doubleval($values['valueWithTax']);
-				$price->setValueWithTax($val > 0 ? $val : null);
-				$val = doubleval($values['oldValueWithTax']);
-				$price->setOldValueWithTax($val > 0 ? $val : null);
-				
-				
-				$price->setTaxCode($values['taxCode'] === '' ? null : $values['taxCode']);
-				
+			{				
+				$price->setTaxCategory($values['taxCategory'] == '' ? null : $values['taxCategory']);			
 				$val = doubleval($values['valueWithoutTax']);
 				$price->setValueWithoutTax($val > 0 ? $val : null);	
 				$val = doubleval($values['oldValueWithoutTax']);
 				$price->setOldValueWithoutTax($val > 0 ? $val : null);
 				
-				$price->setEcoTax($values['ecoTax'] === '' ? 0 : doubleval($values['ecoTax']));
+				$price->setEcoTax($values['ecoTax'] == '' ? null : doubleval($values['ecoTax']));
 				if ($price->isModified())
 				{
-					Framework::info(__METHOD__ . " " . $price->__toString());
-					Framework::info(var_export($price->getModifiedPropertyNames(), true));
 					$price->save();
 				}
 				return true;
