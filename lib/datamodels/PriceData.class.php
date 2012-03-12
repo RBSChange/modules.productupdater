@@ -6,7 +6,7 @@ class productupdater_PriceData implements productupdater_DataModel
 	 */
 	private $productData;
 	
-	private $keys = array('valueWithTax', 'oldValueWithTax',  'taxCode',  'valueWithoutTax', 'oldValueWithoutTax', 'taxCategory', 'ecoTax');
+	private $keys = array('valueWithTax', 'oldValueWithTax', 'valueWithoutTax', 'oldValueWithoutTax', 'taxCategory', 'ecoTax');
 	 
 	/**
 	 * @param productupdater_persistentdocument_productdata $productData
@@ -23,7 +23,6 @@ class productupdater_PriceData implements productupdater_DataModel
 	{
 		$headers['valueWithTax'] = 'valueWithTax (RO)';
 		$headers['oldValueWithTax'] = 'oldValueWithTax (RO)';
-		$headers['taxCode'] = 'taxCode (RO)';
 		$headers['valueWithoutTax'] = 'valueWithoutTax';
 		$headers['oldValueWithoutTax'] = 'oldValueWithoutTax';
 		$headers['taxCategory'] = 'taxCategory';
@@ -37,12 +36,14 @@ class productupdater_PriceData implements productupdater_DataModel
 	 */
 	function exportValues($document, &$values)
 	{
-		$price = $document->getPrice($this->productData->getShop(), null);
+		$shop =  $this->productData->getShop();
+		$billingArea = $shop->getDefaultBillingArea();
+		
+		$price = $document->getPrice($shop, $billingArea, null);
 		if ($price instanceof catalog_persistentdocument_price && !$price->isNew()) 
 		{
 			$values['valueWithTax'] = $price->getValueWithTax();
 			$values['oldValueWithTax'] = $price->getOldValueWithTax();
-			$values['taxCode'] = $price->getTaxCode();
 			$values['valueWithoutTax'] = $price->getValueWithoutTax();
 			$values['oldValueWithoutTax'] = $price->getOldValueWithoutTax();
 			$values['taxCategory'] = $price->getTaxCategory();
@@ -52,7 +53,6 @@ class productupdater_PriceData implements productupdater_DataModel
 		{
 			$values['valueWithTax'] = '';
 			$values['oldValueWithTax'] = '';
-			$values['taxCode'] = '';
 			$values['valueWithoutTax'] = '';
 			$values['oldValueWithoutTax'] = '';
 			$values['taxCategory'] = '';
@@ -70,7 +70,9 @@ class productupdater_PriceData implements productupdater_DataModel
 	{
 		if ($document instanceof catalog_persistentdocument_product) 
 		{
-			$price = $document->getPrice($this->productData->getShop(), null);
+			$shop =  $this->productData->getShop();
+			$billingArea = $shop->getDefaultBillingArea();
+			$price = $document->getPrice($shop, $billingArea, null);
 			if ($price instanceof catalog_persistentdocument_price && !$price->isNew()) 
 			{				
 				$price->setTaxCategory($values['taxCategory'] == '' ? null : $values['taxCategory']);			
