@@ -38,7 +38,7 @@ class productupdater_ProductInfosData implements productupdater_DataModel
 		$img = $document->getVisual();
 		if ($img && $img->isPublished())
 		{
-			$values['visual'] = LinkHelper::getDocumentUrl($img, $img->getLang(), MediaHelper::getFormatPropertiesByName('modules.catalog.frontoffice/detailproduct'));
+			$values['visual'] = LinkHelper::getDocumentUrl($img, $img->getLang(), MediaHelper::getFormatPropertiesByName('modules.catalog.frontoffice/big'));
 		}
 		else
 		{
